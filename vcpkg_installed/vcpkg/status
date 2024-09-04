@@ -1,0 +1,77 @@
+Package: vcpkg-cmake-config
+Version: 2024-05-23
+Architecture: arm64-osx
+Multi-Arch: same
+Abi: 1973de3d045f731b28ef16f16418bb26a71a4efacdcd6124d84217e3e4f635ad
+Status: install ok installed
+
+Package: vcpkg-cmake
+Version: 2024-04-23
+Architecture: arm64-osx
+Multi-Arch: same
+Abi: 3aa7c34b51520826028be89408e63408961c8c28033df8950e011fbd51de82dc
+Status: install ok installed
+
+Package: fmt
+Version: 11.0.2
+Depends: vcpkg-cmake, vcpkg-cmake-config
+Architecture: arm64-osx
+Multi-Arch: same
+Abi: 8dbb719683e2db82ca73959eecf91ab167502de4b92f27ff4121ff3d86fac1f4
+Description: {fmt} is an open-source formatting library providing a fast and safe alternative to C stdio and C++ iostreams.
+Status: install ok installed
+
+Package: egl-registry
+Version: 2024-01-25
+Architecture: arm64-osx
+Multi-Arch: same
+Abi: b787f36d1b16cfd8eaa690d39d305fb191f6cc865d9c7529744c61fc187e29ec
+Description: EGL API and Extension Registry
+Status: install ok installed
+
+Package: opengl-registry
+Version: 2024-02-10
+Port-Version: 1
+Depends: egl-registry
+Architecture: arm64-osx
+Multi-Arch: same
+Abi: 4be07c601f550371e48d206879311abf104bfce85ec917aad96e0410ea2c9e64
+Description: OpenGL, OpenGL ES, and OpenGL ES-SC API and Extension Registry
+Status: install ok installed
+
+Package: glad
+Version: 0.1.36
+Depends: egl-registry, opengl-registry, vcpkg-cmake, vcpkg-cmake-config
+Architecture: arm64-osx
+Multi-Arch: same
+Abi: 365c665c785bce0bb383290a26da3bd69ae033c33345203eaf940c9534a6defc
+Description: Multi-Language Vulkan/GL/GLES/EGL/GLX/WGL Loader-Generator based on the official specs.
+Default-Features: loader
+Status: install ok installed
+
+Package: glad
+Feature: loader
+Architecture: arm64-osx
+Multi-Arch: same
+Description: Generate loader logic.
+Status: install ok installed
+
+Package: glfw3
+Version: 3.4
+Depends: vcpkg-cmake, vcpkg-cmake-config
+Architecture: arm64-osx
+Multi-Arch: same
+Abi: 436aecbcc7561da5d9cd00ad3a025d03f853ff56d30b180a415f56f8c41b72b2
+Description: GLFW is a free, Open Source, multi-platform library for OpenGL, OpenGL ES and Vulkan application development. It provides a simple, platform-independent API for creating windows, contexts and surfaces, reading input, handling events, etc.
+Status: install ok installed
+
+Package: opengl
+Version: 2022-12-04
+Port-Version: 3
+Depends: opengl-registry
+Architecture: arm64-osx
+Multi-Arch: same
+Abi: 01a5383d4d26502fe1e2b49b353be57fd1b20f76775b552ebdf4a92bfd21744e
+Description: Open Graphics Library (OpenGL)[3][4][5] is a cross-language, cross-platform application programming interface (API) for rendering 2D and 3D vector graphics.
+Status: install ok installed
+

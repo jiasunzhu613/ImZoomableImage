@@ -1,0 +1,6 @@
+x64-osx/
+x64-osx/share/
+x64-osx/share/opengl/
+x64-osx/share/opengl/usage
+x64-osx/share/opengl/vcpkg.spdx.json
+x64-osx/share/opengl/vcpkg_abi_info.txt

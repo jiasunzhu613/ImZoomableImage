@@ -1,0 +1,6 @@
+Package: vcpkg-cmake
+Version: 2024-04-23
+Architecture: arm64-osx
+Multi-Arch: same
+Abi: 3aa7c34b51520826028be89408e63408961c8c28033df8950e011fbd51de82dc
+Status: purge ok not-installed

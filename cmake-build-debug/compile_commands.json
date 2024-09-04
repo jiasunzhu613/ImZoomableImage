@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/Users/jonathanzhu/Desktop/ImZoomableImage/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -isystem /Users/jonathanzhu/Desktop/ImZoomableImage/cmake-build-debug/vcpkg_installed/x64-osx/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/System/Library/Frameworks -std=gnu++20 -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk -o CMakeFiles/ImZoomableImage.dir/ImZoomableImage.cpp.o -c /Users/jonathanzhu/Desktop/ImZoomableImage/ImZoomableImage.cpp",
+  "file": "/Users/jonathanzhu/Desktop/ImZoomableImage/ImZoomableImage.cpp",
+  "output": "CMakeFiles/ImZoomableImage.dir/ImZoomableImage.cpp.o"
+},
+{
+  "directory": "/Users/jonathanzhu/Desktop/ImZoomableImage/cmake-build-debug",
+  "command": "/Library/Developer/CommandLineTools/usr/bin/c++  -isystem /Users/jonathanzhu/Desktop/ImZoomableImage/cmake-build-debug/vcpkg_installed/x64-osx/include -iframework /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/System/Library/Frameworks -std=gnu++20 -arch x86_64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk -o CMakeFiles/demo.dir/imgui_demo.cpp.o -c /Users/jonathanzhu/Desktop/ImZoomableImage/imgui_demo.cpp",
+  "file": "/Users/jonathanzhu/Desktop/ImZoomableImage/imgui_demo.cpp",
+  "output": "CMakeFiles/demo.dir/imgui_demo.cpp.o"
+}
+]
