@@ -1,1 +1,3 @@
-## ImZoomableImage 
+## ImZoomableImage
+
+TODO: write README
