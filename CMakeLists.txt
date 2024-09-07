@@ -10,7 +10,7 @@ enable_testing()
 # set project files
 set(PRJ_HEADERS ImZoomableImage.h)
 set(PRJ_SOURCES ImZoomableImage.cpp)
-set(PRJ_MAIN imgui_demo.cpp)
+set(PRJ_MAIN demo.cpp)
 
 # Set functions
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
