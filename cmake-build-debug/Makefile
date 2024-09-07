@@ -491,19 +491,6 @@ ContinuousSubmit/fast:
 .PHONY : ContinuousSubmit/fast
 
 #=============================================================================
-# Target rules for targets named ImZoomableImage
-
-# Build rule for target.
-ImZoomableImage: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ImZoomableImage
-.PHONY : ImZoomableImage
-
-# fast build rule for target.
-ImZoomableImage/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImZoomableImage.dir/build.make CMakeFiles/ImZoomableImage.dir/build
-.PHONY : ImZoomableImage/fast
-
-#=============================================================================
 # Target rules for targets named demo
 
 # Build rule for target.
@@ -521,7 +508,7 @@ ImZoomableImage.o: ImZoomableImage.cpp.o
 
 # target to build an object file
 ImZoomableImage.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImZoomableImage.dir/build.make CMakeFiles/ImZoomableImage.dir/ImZoomableImage.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/ImZoomableImage.cpp.o
 .PHONY : ImZoomableImage.cpp.o
 
 ImZoomableImage.i: ImZoomableImage.cpp.i
@@ -529,7 +516,7 @@ ImZoomableImage.i: ImZoomableImage.cpp.i
 
 # target to preprocess a source file
 ImZoomableImage.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImZoomableImage.dir/build.make CMakeFiles/ImZoomableImage.dir/ImZoomableImage.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/ImZoomableImage.cpp.i
 .PHONY : ImZoomableImage.cpp.i
 
 ImZoomableImage.s: ImZoomableImage.cpp.s
@@ -537,7 +524,7 @@ ImZoomableImage.s: ImZoomableImage.cpp.s
 
 # target to generate assembly for a file
 ImZoomableImage.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImZoomableImage.dir/build.make CMakeFiles/ImZoomableImage.dir/ImZoomableImage.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/ImZoomableImage.cpp.s
 .PHONY : ImZoomableImage.cpp.s
 
 imgui_demo.o: imgui_demo.cpp.o
@@ -601,7 +588,6 @@ help:
 	@echo "... NightlySubmit"
 	@echo "... NightlyTest"
 	@echo "... NightlyUpdate"
-	@echo "... ImZoomableImage"
 	@echo "... demo"
 	@echo "... ImZoomableImage.o"
 	@echo "... ImZoomableImage.i"

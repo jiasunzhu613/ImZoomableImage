@@ -6,12 +6,16 @@
 // - Getting Started      https://dearimgui.com/getting-started
 // - Documentation        https://dearimgui.com/docs (same as your local docs/ folder).
 // - Introduction, links and more at the top of imgui.cpp
-
+#define IMGUI_DEFINE_MATH_OPERATORS
+#include "ImZoomableImage.h"
 #include "vcpkg_installed/arm64-osx/include/imgui.h"
 #include "vcpkg_installed/arm64-osx/include/imgui_internal.h"
 #include "vcpkg_installed/arm64-osx/include/imgui_impl_glfw.h"
 #include "vcpkg_installed/arm64-osx/include/imgui_impl_opengl3.h"
+#include <cstdint>
 #include <stdio.h>
+#include <iostream>
+using std::cout, std::endl;
 #define GL_SILENCE_DEPRECATION
 #if defined(IMGUI_IMPL_OPENGL_ES2)
 #include <GLES2/gl2.h>
@@ -24,6 +28,59 @@
 #if defined(_MSC_VER) && (_MSC_VER >= 1900) && !defined(IMGUI_DISABLE_WIN32_FUNCTIONS)
 #pragma comment(lib, "legacy_stdio_definitions")
 #endif
+
+#define _CRT_SECURE_NO_WARNINGS
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
+
+// Simple helper function to load an image into a OpenGL texture with common settings
+bool LoadTextureFromMemory(const void* data, size_t data_size, GLuint* out_texture, int* out_width, int* out_height)
+{
+    // Load from file
+    int image_width = 0;
+    int image_height = 0;
+    unsigned char* image_data = stbi_load_from_memory((const unsigned char*)data, (int)data_size, &image_width, &image_height, NULL, 4);
+    if (image_data == NULL)
+        return false;
+
+    // Create a OpenGL texture identifier
+    GLuint image_texture;
+    glGenTextures(1, &image_texture);
+    glBindTexture(GL_TEXTURE_2D, image_texture);
+
+    // Setup filtering parameters for display
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+
+    // Upload pixels into texture
+    glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image_width, image_height, 0, GL_RGBA, GL_UNSIGNED_BYTE, image_data);
+    stbi_image_free(image_data);
+
+    *out_texture = image_texture;
+    *out_width = image_width;
+    *out_height = image_height;
+
+    return true;
+}
+
+// Open and read a file, then forward to LoadTextureFromMemory()
+bool LoadTextureFromFile(const char* file_name, GLuint* out_texture, int* out_width, int* out_height)
+{
+    FILE* f = fopen(file_name, "rb");
+    if (f == NULL)
+        return false;
+    fseek(f, 0, SEEK_END);
+    size_t file_size = (size_t)ftell(f);
+    if (file_size == -1)
+        return false;
+    fseek(f, 0, SEEK_SET);
+    void* file_data = IM_ALLOC(file_size);
+    fread(file_data, 1, file_size, f);
+    bool ret = LoadTextureFromMemory(file_data, file_size, out_texture, out_width, out_height);
+    IM_FREE(file_data);
+    return ret;
+}
 
 // This example can also compile and run with Emscripten! See 'Makefile.emscripten' for details.
 #ifdef __EMSCRIPTEN__
@@ -112,6 +169,14 @@ int main(int, char**)
     bool show_another_window = false;
     ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
 
+    int image_w, image_h;
+    GLuint image_texture;
+    bool ret = LoadTextureFromFile("../MyImage01.jpg", &image_texture, &image_w, &image_h);
+    IM_ASSERT(ret);
+
+    ImVec2 u_0 = ImVec2(0.0f, 0.0f);
+    ImVec2 u_1 = ImVec2(1.0f, 1.0f);
+
     // Main loop
 #ifdef __EMSCRIPTEN__
     // For an Emscripten build we are disabling file-system access, so let's not attempt to do a fopen() of the imgui.ini file.
@@ -142,6 +207,7 @@ int main(int, char**)
         // 1. Show the big demo window (Most of the sample code is in ImGui::ShowDemoWindow()! You can browse its code to learn more about Dear ImGui!).
         if (show_demo_window)
             ImGui::ShowDemoWindow(&show_demo_window);
+
 
         // 2. Show a simple window that we create ourselves. We use a Begin/End pair to create a named window.
         {
@@ -175,6 +241,67 @@ int main(int, char**)
                 show_another_window = false;
             ImGui::End();
         }
+        ImGui::Begin("test window");
+        ImGui::Z_Image((void*)(intptr_t) image_texture, ImVec2(image_w, image_h), u_0, u_1);
+        ImGui::End();
+        // ImGuiIO& IO = ImGui::GetIO();
+        // ImDrawList* drawlist = ImGui::GetWindowDrawList();
+        // 
+        //
+        // ImGui::SliderFloat2("u_0", u_0, 0.0f, 1.0f);
+        // ImGui::SliderFloat2("u_1", u_1, 0.0f, 1.0f);
+        // 
+        // //NOTE: make sure to use GetCursorScreenPos here instead of GetCursorPos, GetCursorScreenPos returns the cursor in window
+        // ImVec2 cursor_pos = ImGui::GetCursorScreenPos();
+        // ImVec2 image_size = ImVec2(image_w, image_h);
+        // drawlist->AddImage((void*)(intptr_t)image_texture, cursor_pos, cursor_pos + image_size, ImVec2(u_0[0], u_0[1]), ImVec2(u_1[0], u_1[1]));
+        // ImGui::InvisibleButton("image", image_size);
+        // 
+        // const bool is_hovered = ImGui::IsItemHovered();
+        // const bool is_held = ImGui::IsItemActive();
+        //
+        // //UV texture coordinates in decimal form allows it to be used as a zoom ratio to find how much we've zoomed in to the image
+        // float zoom_ratio = u_1[0] - u_0[0];
+        // //TODO: probably need a scale factor for one dimension of the image
+        //
+        // // Move zoomed image on drag
+        // if (is_held) {
+        //     float x_dist = u_1[0] - u_0[0];
+        //     float y_dist = u_1[1] - u_0[1];
+        //     ImVec2 mouse_delta = IO.MouseDelta * 0.002f * zoom_ratio;
+        //     // cout << mouse_delta[0] << " " << mouse_delta[1] << endl;
+        //     u_0[0] = fmax(0.0f, fmin(1.0f - x_dist, u_0[0] - mouse_delta.x));
+        //     u_0[1] = fmax(0.0f, fmin(1.0f - y_dist, u_0[1] - mouse_delta.y));
+        //     u_1[0] = fmin(1.0f, fmax(0.0f + x_dist, u_1[0] - mouse_delta.x)); 
+        //     u_1[1] = fmin(1.0f, fmax(0.0f + y_dist, u_1[1] - mouse_delta.y)); 
+        // }
+        // 
+        // // Zoom in/out on image on scroll
+        // if (is_hovered) {
+        //     float mouse_wheel_delta = IO.MouseWheel * 0.005f;
+        //     
+        //     // clamp u_0 and u_1 final position so that image does not flip
+        //     float x_clamp = (u_0[0] + u_1[0]) / 2.0f;
+        //     float y_clamp = (u_0[1] + u_1[1]) / 2.0f;
+        //     // u_0 reached a border, so we wait for u_1 to reach a border as well (therefore we only increment u_1)
+        //     if ((u_0[0] == 0.0f || u_0[1] == 0.0f) && (u_1[0] != 1.0f && u_1[1] != 1.0f)) { 
+        //         u_1[0] = fmin(1.0f, fmax(x_clamp, u_1[0] + mouse_wheel_delta));
+        //         u_1[1] = fmin(1.0f, fmax(y_clamp, u_1[1] + mouse_wheel_delta));
+        //     } 
+        //     //u_1 reached a border, so we wait for u_0 to reach a border as well (therefore we only increment u_0)
+        //     else if ((u_1[0] == 1.0f || u_1[1] == 1.0f) && (u_0[0] != 0.0f && u_0[1] != 0.0f)) {
+        //         u_0[0] = fmax(0.0f, fmin(x_clamp, u_0[0] - mouse_wheel_delta));
+        //         u_0[1] = fmax(0.0f, fmin(y_clamp, u_0[1] - mouse_wheel_delta));
+        //     }
+        //     else {
+        //         u_0[0] = fmax(0.0f, fmin(x_clamp, u_0[0] - mouse_wheel_delta));
+        //         u_0[1] = fmax(0.0f, fmin(y_clamp, u_0[1] - mouse_wheel_delta));
+        //         u_1[0] = fmin(1.0f, fmax(x_clamp, u_1[0] + mouse_wheel_delta));
+        //         u_1[1] = fmin(1.0f, fmax(y_clamp, u_1[1] + mouse_wheel_delta));
+        //     }
+        // }
+        // 
+        // ImGui::End();
 
         // Rendering
         ImGui::Render();

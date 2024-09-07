@@ -63,7 +63,6 @@ CMAKE_BINARY_DIR = /Users/jonathanzhu/Desktop/ImZoomableImage/cmake-build-debug
 # Directory level rules for the build root directory
 
 # The main recursive "all" target.
-all: CMakeFiles/ImZoomableImage.dir/all
 all: CMakeFiles/demo.dir/all
 .PHONY : all
 
@@ -100,7 +99,6 @@ clean: CMakeFiles/ContinuousTest.dir/clean
 clean: CMakeFiles/ContinuousCoverage.dir/clean
 clean: CMakeFiles/ContinuousMemCheck.dir/clean
 clean: CMakeFiles/ContinuousSubmit.dir/clean
-clean: CMakeFiles/ImZoomableImage.dir/clean
 clean: CMakeFiles/demo.dir/clean
 .PHONY : clean
 
@@ -833,44 +831,18 @@ CMakeFiles/ContinuousSubmit.dir/clean:
 .PHONY : CMakeFiles/ContinuousSubmit.dir/clean
 
 #=============================================================================
-# Target rules for target CMakeFiles/ImZoomableImage.dir
-
-# All Build rule for target.
-CMakeFiles/ImZoomableImage.dir/all:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImZoomableImage.dir/build.make CMakeFiles/ImZoomableImage.dir/depend
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImZoomableImage.dir/build.make CMakeFiles/ImZoomableImage.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jonathanzhu/Desktop/ImZoomableImage/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target ImZoomableImage"
-.PHONY : CMakeFiles/ImZoomableImage.dir/all
-
-# Build rule for subdir invocation for target.
-CMakeFiles/ImZoomableImage.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jonathanzhu/Desktop/ImZoomableImage/cmake-build-debug/CMakeFiles 2
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/ImZoomableImage.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jonathanzhu/Desktop/ImZoomableImage/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/ImZoomableImage.dir/rule
-
-# Convenience name for target.
-ImZoomableImage: CMakeFiles/ImZoomableImage.dir/rule
-.PHONY : ImZoomableImage
-
-# clean rule for target.
-CMakeFiles/ImZoomableImage.dir/clean:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ImZoomableImage.dir/build.make CMakeFiles/ImZoomableImage.dir/clean
-.PHONY : CMakeFiles/ImZoomableImage.dir/clean
-
-#=============================================================================
 # Target rules for target CMakeFiles/demo.dir
 
 # All Build rule for target.
 CMakeFiles/demo.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/demo.dir/build.make CMakeFiles/demo.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jonathanzhu/Desktop/ImZoomableImage/cmake-build-debug/CMakeFiles --progress-num=3,4 "Built target demo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/jonathanzhu/Desktop/ImZoomableImage/cmake-build-debug/CMakeFiles --progress-num=1,2,3 "Built target demo"
 .PHONY : CMakeFiles/demo.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/demo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jonathanzhu/Desktop/ImZoomableImage/cmake-build-debug/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jonathanzhu/Desktop/ImZoomableImage/cmake-build-debug/CMakeFiles 3
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/demo.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jonathanzhu/Desktop/ImZoomableImage/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/demo.dir/rule

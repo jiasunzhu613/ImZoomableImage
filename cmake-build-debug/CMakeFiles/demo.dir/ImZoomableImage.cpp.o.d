@@ -1,5 +1,6 @@
-CMakeFiles/ImZoomableImage.dir/ImZoomableImage.cpp.o: \
+CMakeFiles/demo.dir/ImZoomableImage.cpp.o: \
   /Users/jonathanzhu/Desktop/ImZoomableImage/ImZoomableImage.cpp \
+  /Users/jonathanzhu/Desktop/ImZoomableImage/ImZoomableImage.h \
   /Users/jonathanzhu/Desktop/ImZoomableImage/vcpkg_installed/arm64-osx/include/imgui.h \
   /Users/jonathanzhu/Desktop/ImZoomableImage/vcpkg_installed/arm64-osx/include/imconfig.h \
   /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk/usr/include/c++/v1/float.h \

@@ -26,7 +26,6 @@
 /Users/jonathanzhu/Desktop/ImZoomableImage/cmake-build-debug/CMakeFiles/ContinuousCoverage.dir
 /Users/jonathanzhu/Desktop/ImZoomableImage/cmake-build-debug/CMakeFiles/ContinuousMemCheck.dir
 /Users/jonathanzhu/Desktop/ImZoomableImage/cmake-build-debug/CMakeFiles/ContinuousSubmit.dir
-/Users/jonathanzhu/Desktop/ImZoomableImage/cmake-build-debug/CMakeFiles/ImZoomableImage.dir
 /Users/jonathanzhu/Desktop/ImZoomableImage/cmake-build-debug/CMakeFiles/demo.dir
 /Users/jonathanzhu/Desktop/ImZoomableImage/cmake-build-debug/CMakeFiles/test.dir
 /Users/jonathanzhu/Desktop/ImZoomableImage/cmake-build-debug/CMakeFiles/edit_cache.dir

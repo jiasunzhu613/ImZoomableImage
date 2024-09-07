@@ -3,7 +3,7 @@ Compiler found: /Library/Developer/CommandLineTools/usr/bin/c++
 Detecting compiler hash for triplet x64-osx...
 Compiler found: /Library/Developer/CommandLineTools/usr/bin/c++
 All requested packages are currently installed.
-Total install time: 1 us
+Total install time: 9.96 us
 glad provides CMake targets:
 
   # this is heuristically generated, and may not be correct

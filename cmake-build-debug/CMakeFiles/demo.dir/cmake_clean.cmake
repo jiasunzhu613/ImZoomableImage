@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/demo.dir/ImZoomableImage.cpp.o"
+  "CMakeFiles/demo.dir/ImZoomableImage.cpp.o.d"
   "CMakeFiles/demo.dir/imgui_demo.cpp.o"
   "CMakeFiles/demo.dir/imgui_demo.cpp.o.d"
   "demo"

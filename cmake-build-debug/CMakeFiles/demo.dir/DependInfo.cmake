@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/jonathanzhu/Desktop/ImZoomableImage/ImZoomableImage.cpp" "CMakeFiles/demo.dir/ImZoomableImage.cpp.o" "gcc" "CMakeFiles/demo.dir/ImZoomableImage.cpp.o.d"
   "/Users/jonathanzhu/Desktop/ImZoomableImage/imgui_demo.cpp" "CMakeFiles/demo.dir/imgui_demo.cpp.o" "gcc" "CMakeFiles/demo.dir/imgui_demo.cpp.o.d"
   )
 
