@@ -10,4 +10,7 @@ For information on how images are loaded and displayed in Dear ImGui, check out 
 To use this widget you can simply copy the function in ImZoomableImage.cpp into your main source files or you can add ImZoomableImage.h and ImZoomableImage.cpp into your working directory. 
 The _ImZoomableImage_ widget is identical to the Image widget in ImGui except with the added functionality to zoom in and out of the image and drag the zoomed-in image. 
 
-Since ImZoomableImage is based on the Image widget in ImGui, feel free to check out the [Image widget documentation](https://github.com/ocornut/imgui/blob/cc40ae2101acd1fb4e0585a46198e6fd12960617/imgui_widgets.cpp) for additional information. 
+Since ImZoomableImage is based on the Image widget in ImGui, feel free to check out the [Image widget documentation](https://github.com/ocornut/imgui/blob/cc40ae2101acd1fb4e0585a46198e6fd12960617/imgui_widgets.cpp) for additional information.
+
+### Demo
+*Gonna come back and write this*
